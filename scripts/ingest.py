@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch official PIB RSS records and write a normalized static JSON dataset."""
+"""Fetch official RBI and SEBI RSS records into a normalized static dataset."""
 import argparse
 import html
 import json
