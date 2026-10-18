@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": null,
+  "storyCount": 0,
+  "sources": [],
+  "stories": [],
+  "notice": "Live official-source records are populated by the scheduled ingestion workflow. Category and place labels are automated discovery aids, not independent verification."
+}

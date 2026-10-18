@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b18">
+  <meta name="description" content="India Civic Pulse brings public affairs, policy and parliamentary context into one map-first dashboard.">
+  <title>India Civic Pulse — Follow what shapes India</title>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://tile.openstreetmap.org">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="app-live.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="India Civic Pulse home"><span class="brand-mark">CP</span><span>civic<span class="brand-light">pulse</span><small>INDIA · PUBLIC INTEREST, IN CONTEXT</small></span></a>
+    <nav class="topnav" aria-label="Main navigation"><a class="active" href="#dashboard">Explore</a><a href="#methodology">Methodology</a><a href="https://sansad.in/" target="_blank" rel="noreferrer">Parliament ↗</a></nav>
+    <span class="demo-pill"><i></i> PREVIEW MODE</span>
+  </header>
+  <main id="dashboard">
+    <section class="intro">
+      <div><p class="eyebrow">THE BIG PICTURE, DOWN TO YOUR DISTRICT</p><h1>Follow what shapes <em>India.</em></h1><p class="intro-copy">Public affairs, policy decisions and parliamentary activity — connected by place, topic and source.</p></div>
+      <div class="intro-aside"><span class="live-dot"></span><div><strong>Evidence before noise</strong><p>Every story should lead back to its source.</p></div></div>
+    </section>
+    <section class="toolbar" aria-label="Story filters">
+      <label class="searchbox"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search places, topics or headlines…" aria-label="Search stories"></label>
+      <div id="category-filters" class="filters" aria-label="Filter by topic">
+        <button class="filter active" data-category="All" aria-pressed="true">All updates <span>00</span></button>
+        <button class="filter" data-category="Policy" aria-pressed="false">Policy</button><button class="filter" data-category="Parliament" aria-pressed="false">Parliament</button><button class="filter" data-category="Civic" aria-pressed="false">Civic life</button><button class="filter" data-category="Environment" aria-pressed="false">Environment</button><button class="filter" data-category="Government" aria-pressed="false">Government</button>
+      </div>
+    </section>
+    <div class="demo-notice"><span aria-hidden="true">ⓘ</span><p>Official publisher records are displayed as published. Automated categories and place mentions are discovery aids, not independent verification.</p><button id="dismiss-notice" aria-label="Dismiss source note">×</button></div>
+    <div id="feed-status" role="status" aria-live="polite" aria-busy="true"><span class="status-dot"></span><span>Loading published source records…</span></div>
+    <section class="workspace" aria-label="Civic updates explorer">
+      <aside class="feed-panel">
+        <div class="panel-heading"><div><p class="eyebrow">THE FEED</p><h2>Across the country <span id="result-count">00</span></h2></div><div class="feed-actions"><button id="refresh-data" class="refresh-button">Refresh ↻</button><button id="reset-filters" class="text-button">Reset ↺</button></div></div>
+        <div id="story-list" class="story-list" aria-live="polite"></div>
+        <div id="empty-state" class="empty-state" hidden><span>⌕</span><strong>No matching updates</strong><p>Try another search term or topic.</p></div>
+        <p class="feed-foot">A useful signal starts with a traceable source.</p>
+      </aside>
+      <section class="map-panel" aria-label="Map and selected story">
+        <div class="map-topline"><div><p class="eyebrow">GEOGRAPHIC VIEW</p><h2>India, in context</h2></div><span class="map-key"><i></i> Story location</span></div>
+        <div id="map" role="application" aria-label="Interactive map of story locations"></div>
+        <div class="map-caption"><span>⌖</span> Select a story or map marker to explore its context.</div>
+        <article id="detail" class="detail-panel" aria-live="polite"></article>
+      </section>
+    </section>
+    <section id="methodology" class="methodology"><div><p class="eyebrow">BUILT FOR TRUST</p><h2>Context you can check.</h2></div><div class="method-grid"><article><span>01</span><h3>Source first</h3><p>Every published item should link to an original document, official release or reputable reporting.</p></article><article><span>02</span><h3>Place, not guesswork</h3><p>Locations need provenance and confidence. Uncertain geography should stay visibly uncertain.</p></article><article><span>03</span><h3>AI with receipts</h3><p>Summaries and topic labels are aids to discovery, never substitutes for source material.</p></article></div></section>
+  </main>
+  <footer><a class="footer-brand" href="#">civic<span>pulse</span></a><p>An independent civic-information prototype. Not affiliated with the Government of India or Parliament.</p><a href="https://www.mygov.in/" target="_blank" rel="noreferrer">MyGov ↗</a></footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
