@@ -15,16 +15,16 @@ from pathlib import Path
 
 FEEDS = [
     {
-        "id": "pib-headquarters-press-releases",
-        "name": "PIB Headquarters — Press Releases",
-        "url": "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1",
-        "publisher": "Press Information Bureau, Government of India",
+        "id": "reserve-bank-press-releases",
+        "name": "Reserve Bank of India — Press Releases",
+        "url": "https://rbi.org.in/pressreleases_rss.xml",
+        "publisher": "Reserve Bank of India",
     },
     {
-        "id": "pib-delhi-press-releases",
-        "name": "PIB Delhi — Press Releases",
-        "url": "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3",
-        "publisher": "Press Information Bureau, Government of India",
+        "id": "sebi-regulatory-updates",
+        "name": "SEBI — Press Releases, Circulars and Orders",
+        "url": "https://www.sebi.gov.in/sebirss.xml",
+        "publisher": "Securities and Exchange Board of India",
     },
 ]
 USER_AGENT = "IndiaCivicPulse/1.0 (+https://github.com/Aaqibhafeezkhan/India-Civic-Pulse)"
@@ -101,7 +101,7 @@ def category_for(text):
         ("Environment", ("environment", "pollution", "climate", "forest", "wildlife", "air quality", "water quality", "renewable energy")),
         ("Parliament", ("parliament", "lok sabha", "rajya sabha", "question hour", "standing committee", "parliamentary")),
         ("Civic", ("municipal", "public grievance", "civic", "sanitation", "drinking water", "district administration")),
-        ("Policy", ("policy", "scheme", "notification", "guidelines", "rules", "cabinet", "budget", "ministry", "government launches", "government announces")),
+        ("Policy", ("policy", "scheme", "notification", "guidelines", "rules", "cabinet", "budget", "ministry", "government launches", "government announces", "circular", "regulatory", "reserve bank", "securities and exchange", "monetary", "repo rate", "inflation", "banking regulation")),
     ]
     for category, words in rules:
         if any(word in text for word in words):
@@ -174,6 +174,8 @@ def fetch_feed(source):
             if response.status != 200:
                 raise RuntimeError("HTTP status " + str(response.status))
         records = parse_feed(payload, source)
+        if not records:
+            raise RuntimeError("Feed returned no parseable dated records")
         return records, {"id": source["id"], "name": source["name"], "url": source["url"],
                          "status": "ok", "items": len(records), "durationMs": round((time.monotonic()-started)*1000)}
     except (urllib.error.URLError, TimeoutError, ET.ParseError, RuntimeError, OSError, ValueError) as exc:

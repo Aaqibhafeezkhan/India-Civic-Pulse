@@ -1,15 +1,21 @@
 # Data sources, provenance and editorial policy
 
-## Live adapter currently implemented
+## Live adapters currently implemented
 
-**Press Information Bureau (PIB), Government of India — Press Releases RSS**
+**Reserve Bank of India — Press Releases RSS**
 
-- Headquarters feed: https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1
-- Delhi regional feed: https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3
-- Publisher reference page: https://www.pib.gov.in/ViewRss.aspx?lang=1&reg=3
-- Access method: scheduled RSS retrieval using Python's standard library.
-- Stored fields: publisher-supplied title, description, URL, publication time and identifier; retrieval time; automated category; location-match metadata; source adapter status.
-- Limits: PIB press releases represent official communications, not a neutral or complete account of all civic events. Feed items are not independently fact-checked by this application.
+- Feed: https://rbi.org.in/pressreleases_rss.xml
+- Publisher RSS directory: https://www.rbi.org.in/Scripts/rss.aspx
+
+**Securities and Exchange Board of India — RSS**
+
+- Feed: https://www.sebi.gov.in/sebirss.xml
+- Publisher RSS directory: https://www.sebi.gov.in/rss.html
+- Covers press releases, circulars, orders and rulings.
+
+The PIB RSS endpoints were also attempted but returned HTTP 403 from GitHub-hosted runners. They are not active adapters until a permitted retrieval path can be used.
+
+For active adapters, stored fields include publisher-supplied title, description, direct URL, publication time and identifier; retrieval time; automated category; location-match metadata; and per-source health. Official records are not independently fact-checked by this application.
 
 ## Additional source registries for future adapters
 

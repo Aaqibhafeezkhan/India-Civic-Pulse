@@ -26,7 +26,7 @@ Open http://localhost:8000. Run ingestion before starting the server. Opening th
 
 ## Live-data scope and limitations
 
-The first automated sources are the official [PIB Headquarters press-release RSS feed](https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1) and [PIB Delhi press-release RSS feed](https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3). It provides genuine source-linked records, but it is not a comprehensive feed of every Indian public institution. Items are publisher records, not independently fact-checked stories. Keyword-based categories and place mentions are discovery aids and may be wrong. No LLM is used to generate or embellish summaries.
+The current adapters use the official [Reserve Bank of India press-release RSS feed](https://rbi.org.in/pressreleases_rss.xml) and the [SEBI RSS feed](https://www.sebi.gov.in/sebirss.xml), which covers press releases, circulars, orders and rulings. The PIB RSS endpoints returned HTTP 403 from GitHub-hosted runners, so they are not included in the active pipeline until a permitted retrieval path is available. It provides genuine source-linked records, but it is not a comprehensive feed of every Indian public institution. Items are publisher records, not independently fact-checked stories. Keyword-based categories and place mentions are discovery aids and may be wrong. No LLM is used to generate or embellish summaries.
 
 The ingestion workflow runs every six hours and can be run manually from **Actions → Refresh civic data**. It writes data/stories.json and commits only when the snapshot changes. Feed failures are surfaced in workflow logs; the application does not silently substitute invented sample stories.
 
