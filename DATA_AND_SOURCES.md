@@ -4,7 +4,8 @@
 
 **Press Information Bureau (PIB), Government of India — Press Releases RSS**
 
-- Feed: https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3
+- Headquarters feed: https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1
+- Delhi regional feed: https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3
 - Publisher reference page: https://www.pib.gov.in/ViewRss.aspx?lang=1&reg=3
 - Access method: scheduled RSS retrieval using Python's standard library.
 - Stored fields: publisher-supplied title, description, URL, publication time and identifier; retrieval time; automated category; location-match metadata; source adapter status.

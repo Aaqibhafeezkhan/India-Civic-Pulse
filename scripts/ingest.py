@@ -13,12 +13,20 @@ from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 
-FEEDS = [{
-    "id": "pib-press-releases",
-    "name": "Press Information Bureau — Press Releases",
-    "url": "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3",
-    "publisher": "Press Information Bureau, Government of India",
-}]
+FEEDS = [
+    {
+        "id": "pib-headquarters-press-releases",
+        "name": "PIB Headquarters — Press Releases",
+        "url": "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1",
+        "publisher": "Press Information Bureau, Government of India",
+    },
+    {
+        "id": "pib-delhi-press-releases",
+        "name": "PIB Delhi — Press Releases",
+        "url": "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3",
+        "publisher": "Press Information Bureau, Government of India",
+    },
+]
 USER_AGENT = "IndiaCivicPulse/1.0 (+https://github.com/Aaqibhafeezkhan/India-Civic-Pulse)"
 CENTER = [22.9734, 78.6569]
 CITIES = {
@@ -197,7 +205,7 @@ def main():
     output.write_text(json.dumps(dataset, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("Wrote {} stories to {}".format(dataset["storyCount"], output))
     for source in dataset["sources"]:
-        print("{}: {} ({} items)".format(source["name"], source["status"], source["items"]))
+        print("{}: {} ({} items){}".format(source["name"], source["status"], source["items"], " — " + source["error"] if source.get("error") else ""))
     return 0 if any(source["status"] == "ok" for source in dataset["sources"]) else 1
 
 if __name__ == "__main__":
