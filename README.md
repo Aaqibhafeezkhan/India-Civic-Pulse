@@ -26,13 +26,13 @@ Open http://localhost:8000. Run ingestion before starting the server. Opening th
 
 ## Live-data scope and limitations
 
-The first automated source is the official [PIB press-release RSS feed](https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3). It provides genuine source-linked records, but it is not a comprehensive feed of every Indian public institution. Items are publisher records, not independently fact-checked stories. Keyword-based categories and place mentions are discovery aids and may be wrong. No LLM is used to generate or embellish summaries.
+The first automated sources are the official [PIB Headquarters press-release RSS feed](https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1) and [PIB Delhi press-release RSS feed](https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3). It provides genuine source-linked records, but it is not a comprehensive feed of every Indian public institution. Items are publisher records, not independently fact-checked stories. Keyword-based categories and place mentions are discovery aids and may be wrong. No LLM is used to generate or embellish summaries.
 
 The ingestion workflow runs every six hours and can be run manually from **Actions → Refresh civic data**. It writes data/stories.json and commits only when the snapshot changes. Feed failures are surfaced in workflow logs; the application does not silently substitute invented sample stories.
 
 ## Deployment
 
-The repository is a static site and needs no build step. A Vercel project can be linked to this GitHub repository with the repository root as its root directory and no build command. Once linked, pushes to main deploy automatically. The ingestion workflow commits refreshed JSON snapshots to main, so the live feed updates the deployed site as well.
+The repository is a static site and needs no build step. The Deploy GitHub Pages workflow publishes the repository root on pushes to main and after successful data refreshes. In GitHub repository Settings → Pages, select GitHub Actions as the build and deployment source if it is not already enabled. The first successful deployment publishes the site; the public URL appears in the workflow deployment environment. The ingestion workflow commits refreshed JSON snapshots to main, so the deployed site updates as the feed refreshes.
 
 ## Architecture
 
